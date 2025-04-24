@@ -300,7 +300,51 @@ void lab5d()
 }
 void lab6()
 {
-    printf("Тема лабы");
+    printf("В двумерном целочисленном массиве размера L на K обнулить все строки, находящиеся ниже минимального элемента.\n");
+    int L, K;
+    
+    // Ввод размеров матрицы
+    printf("Введите размеры матрицы (L K): ");
+    scanf("%d %d", &L, &K);
+    
+    int amoma[L][K];
+    
+    // Ввод элементов матрицы
+    printf("Введите элементы матрицы %dx%d:\n", L, K);
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < K; j++) {
+            scanf("%d", &amoma[i][j]);
+        }
+    }
+    
+    // Поиск минимального элемента и его позиции
+    int min = amoma[0][0];
+    int min_row = 0;
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < K; j++) {
+            if (amoma[i][j] < min) {
+                min = amoma[i][j];
+                min_row = i;
+            }
+        }
+    }
+    
+    // Обнуление строк ниже строки с минимальным элементом
+    for (int i = min_row + 1; i < L; i++) {
+        for (int j = 0; j < K; j++) {
+            amoma[i][j] = 0;
+        }
+    }
+    
+    // Вывод результата
+    printf("\nМатрица после обработки:\n");
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < K; j++) {
+            printf("%d ", amoma[i][j]);
+        }
+        printf("\n");
+    }
+    
 }
 void lab6d()
 {
